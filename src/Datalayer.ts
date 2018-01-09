@@ -20,7 +20,7 @@ export const subscribeToCampaign = (callback, campaignName) => {
     campaignListeners[campaignName].push(callback)
 }
 
-export const pushUpdates = (responses) => {
+const pushUpdates = (responses) => {
     responses.forEach(campaign => {
         campaignListeners[campaign.campaignName].forEach(cb => {
             cb(campaign);

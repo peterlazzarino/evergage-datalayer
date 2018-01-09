@@ -1,3 +1,5 @@
-import * as Datalayer from "./src/Datalayer";
+import { subscribeToCampaign} from "./src/Datalayer";
 
-export default Datalayer;
+export {
+    subscribeToCampaign
+} 
