@@ -25,6 +25,11 @@ export const subscribeToCampaign = (callback, campaignName) => {
 
 const pushUpdates = (responses) => {
     responses.forEach(campaign => {
+        const listeners = campaignListeners[campaign.campaignName];
+        const hasListeners = Array.isArray(listeners) && listeners.length > 0;
+        if(!hasListeners){
+            return;
+        }
         campaignListeners[campaign.campaignName].forEach(cb => {
             cb(campaign);
         });
