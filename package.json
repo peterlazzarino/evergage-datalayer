@@ -1,6 +1,6 @@
 {
   "name": "evergage-datalayer",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Listener and API for fetching current Evergage campaig information in a users session to be used in an a/b test.",
   "main": "./index.js",
   "types": "./index.d.ts",

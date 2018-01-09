@@ -17,6 +17,9 @@ let campaignListeners = [];
 })();
 
 export const subscribeToCampaign = (callback, campaignName) => {
+    if(!campaignListeners[campaignName]){
+        campaignListeners[campaignName] = [];
+    }
     campaignListeners[campaignName].push(callback)
 }
 
