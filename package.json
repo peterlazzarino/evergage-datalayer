@@ -1,0 +1,49 @@
+{
+  "name": "evergage-datalayer",
+  "version": "1.0.1",
+  "description": "Listener and API for fetching current Evergage campaig information in a users session to be used in an a/b test.",
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "lint": "tslint --fix -c tslint.json 'components/**/*.tsx'",
+    "build": "npm run lint && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterlazzarino/evergage-datalayer.git"
+  },
+  "keywords": [
+    "evergage",
+    "ab",
+    "abtest",
+    "react",
+    "experience",
+    "campaign"
+  ],
+  "author": "Go Ahead Tours",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/peterlazzarino/evergage-datalayer/issues"
+  },
+  "homepage": "https://github.com/peterlazzarino/evergage-datalayer#readme",
+  "dependencies": {
+    "array-index-of": "^0.1.0",
+    "prop-types": "15.6.0",
+    "react": "16.0.0"
+  },
+  "devDependencies": {
+    "@types/enzyme": "2.8.4",
+    "@types/jest": "20.0.4",
+    "@types/prop-types": "15.5.1",
+    "@types/react": "15.0.38",
+    "awesome-typescript-loader": "3.2.1",
+    "babel-preset-env": "1.6.0",
+    "enzyme": "2.9.1",
+    "identity-obj-proxy": "3.0.0",
+    "react-docgen-typescript": "0.0.15",
+    "react-styleguidist": "6.0.0-beta.1",
+    "tslint": "5.5.0",
+    "typescript": "2.3.4",
+    "webpack": "3.4.1"
+  }
+}
