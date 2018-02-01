@@ -17,8 +17,13 @@ let campaignListeners = [];
 })();
 
 export const subscribeToCampaign = (callback, campaignName) => {
-    if(!campaignListeners[campaignName]){
+    const currentListener = campaignListeners[campaignName];
+    const currentCampaign = currentCampaigns[campaignName];
+    if(!currentListener){
         campaignListeners[campaignName] = [];
+    }
+    if(currentCampaign){
+        callback(currentCampaign);
     }
     campaignListeners[campaignName].push(callback)
 }
@@ -27,6 +32,7 @@ const pushUpdates = (responses) => {
     responses.forEach(campaign => {
         const listeners = campaignListeners[campaign.campaignName];
         const hasListeners = Array.isArray(listeners) && listeners.length > 0;
+        storeCampaign(campaign);
         if(!hasListeners){
             return;
         }
@@ -34,4 +40,11 @@ const pushUpdates = (responses) => {
             cb(campaign);
         });
     });
+}
+
+const storeCampaign = (evergageCampaign) => {    
+    if(!currentCampaigns[evergageCampaign.campaignName]){
+        currentCampaigns[evergageCampaign.campaignName] = [];
+    }
+    currentCampaigns[evergageCampaign.campaignName] = evergageCampaign;
 }
