@@ -10,7 +10,7 @@ let currentCampaigns = [];
 let campaignListeners = [];
 
 (()=> {
-    if(!canUseDOM){
+    if(!canUseDOM || !Evergage){
         return false;
     }
     Evergage.addCampaignResponseListener((x) => pushUpdates(x.campaignResponses));
