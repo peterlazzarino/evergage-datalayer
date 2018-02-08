@@ -5,12 +5,13 @@ import * as indexOf from "array-index-of";
 declare var Evergage: any;
 
 const canUseDOM = typeof window !== "undefined";
+const evergageReady = typeof Evergage !== "undefined";
 
 let currentCampaigns = [];
 let campaignListeners = [];
 
 (()=> {
-    if(!canUseDOM || !Evergage){
+    if(!canUseDOM || !evergageReady){
         return false;
     }
     Evergage.addCampaignResponseListener((x) => pushUpdates(x.campaignResponses));
