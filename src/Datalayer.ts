@@ -7,23 +7,22 @@ declare var Evergage: any;
 const canUseDOM = typeof window !== "undefined";
 const evergageReady = typeof Evergage !== "undefined";
 
-let currentCampaigns = [];
-let campaignListeners = [];
+const currentCampaigns = [];
+const campaignListeners = [];
 
-(()=> {
-    if(!canUseDOM || !evergageReady){
-        return false;
+(() => {
+    if (canUseDOM && evergageReady) {
+        Evergage.addCampaignResponseListener((x) => pushUpdates(x.campaignResponses));
     }
-    Evergage.addCampaignResponseListener((x) => pushUpdates(x.campaignResponses));
 })();
 
 export const subscribeToCampaign = (callback, campaignName) => {
     const currentListener = campaignListeners[campaignName];
     const currentCampaign = currentCampaigns[campaignName];
-    if(!currentListener){
+    if (!currentListener) {
         campaignListeners[campaignName] = [];
     }
-    if(currentCampaign){
+    if (currentCampaign) {
         callback(currentCampaign);
     }
     campaignListeners[campaignName].push(callback)
@@ -34,7 +33,7 @@ const pushUpdates = (responses) => {
         const listeners = campaignListeners[campaign.campaignName];
         const hasListeners = Array.isArray(listeners) && listeners.length > 0;
         storeCampaign(campaign);
-        if(!hasListeners){
+        if (!hasListeners) {
             return;
         }
         campaignListeners[campaign.campaignName].forEach(cb => {
@@ -43,8 +42,8 @@ const pushUpdates = (responses) => {
     });
 }
 
-const storeCampaign = (evergageCampaign) => {    
-    if(!currentCampaigns[evergageCampaign.campaignName]){
+const storeCampaign = (evergageCampaign) => {
+    if (!currentCampaigns[evergageCampaign.campaignName]) {
         currentCampaigns[evergageCampaign.campaignName] = [];
     }
     currentCampaigns[evergageCampaign.campaignName] = evergageCampaign;
